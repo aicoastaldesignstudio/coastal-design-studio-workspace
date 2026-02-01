@@ -94,6 +94,25 @@ Configured in `~/.claude/mcp.json`. See `.claude/SETUP.md` for installation.
 
 ---
 
+## Persistent Memory & Context
+
+For better client-specific context that persists across sessions:
+
+1. **Enhance the memory MCP** - Use it actively for per-client insights, decisions, and learned preferences
+2. **Add `notes.md` to each client folder** - Capture decisions, preferences, and patterns discovered during projects
+3. **Use `/capture-insight`** - Appends learnings to client-specific files rather than overwriting shared config
+
+### Client Notes Structure
+```
+clients/[client-name]/notes.md
+- Design decisions and rationale
+- Client communication preferences
+- Discovered patterns and quirks
+- Technical constraints or requirements
+```
+
+---
+
 ## Development Standards
 
 ### WordPress Best Practices
@@ -189,6 +208,15 @@ Monthly newsletter generation.
 "/newsletter for [client] - [month]"
 ```
 **Output:** `output/newsletters/[client]/[date]-newsletter.md`
+
+### /capture-insight
+Capture client-specific learnings to persistent notes.
+```
+"/capture-insight for [client]: [category] - [insight]"
+"/capture-insight for Beachfront Properties: DECISION - Use Noosa styling, not generic coastal"
+```
+**Categories:** DECISION, PREFERENCE, PATTERN, TECHNICAL, CONTEXT
+**Output:** `clients/[client-name]/notes.md`
 
 ---
 
