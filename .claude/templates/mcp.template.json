@@ -1,38 +1,64 @@
 {
   "mcpServers": {
-    "wordpress": {
-      "command": "wordpress-mcp",
+    "filesystem": {
+      "command": "npx",
       "args": [
-        "--host", "PLACEHOLDER_COASTAL_DB_HOST",
-        "--user", "PLACEHOLDER_COASTAL_DB_USER",
-        "--password", "PLACEHOLDER_COASTAL_DB_PASSWORD",
-        "--database", "PLACEHOLDER_COASTAL_DB_NAME"
-      ]
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "PLACEHOLDER_PROJECT_PATH"
+      ],
+      "description": "Read/write project files and client data"
     },
-    "dataforseo": {
-      "command": "dataforseo-mcp",
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Fetch web pages for competitive analysis and research"
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
       "env": {
-        "DATAFORSEO_LOGIN": "PLACEHOLDER_TEAM_LOGIN",
-        "DATAFORSEO_PASSWORD": "PLACEHOLDER_TEAM_PASSWORD"
-      }
+        "BRAVE_API_KEY": "PLACEHOLDER_BRAVE_API_KEY"
+      },
+      "description": "Web search for market research and competitor discovery"
     },
-    "google-ads": {
-      "command": "google-ads-mcp",
-      "args": ["--oauth"]
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Persistent memory for client context across sessions"
     },
-    "google-analytics": {
-      "command": "google-analytics-mcp",
-      "args": ["--oauth"]
-    },
-    "meta-ads": {
-      "command": "meta-ads-mcp",
-      "args": ["--oauth"]
-    },
-    "firecrawl": {
-      "command": "firecrawl-mcp",
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
       "env": {
-        "FIRECRAWL_API_KEY": "PLACEHOLDER_FIRECRAWL_KEY"
-      }
+        "SLACK_BOT_TOKEN": "PLACEHOLDER_SLACK_BOT_TOKEN",
+        "SLACK_TEAM_ID": "PLACEHOLDER_SLACK_TEAM_ID"
+      },
+      "description": "Team notifications and client communication"
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-drive"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "PLACEHOLDER_GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET": "PLACEHOLDER_GOOGLE_CLIENT_SECRET"
+      },
+      "description": "Access client documents and shared assets"
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Browser automation for screenshots and testing"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Complex reasoning for strategy and planning"
     }
+  },
+  "_notes": {
+    "setup": "See .claude/SETUP.md for installation instructions",
+    "credentials": "Get API keys from team 1Password vault",
+    "wordpress": "WordPress access uses REST API via fetch MCP - see SETUP.md"
   }
 }

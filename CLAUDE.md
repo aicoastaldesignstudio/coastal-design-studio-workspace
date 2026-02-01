@@ -45,6 +45,23 @@
 
 ---
 
+## Project Structure
+
+### Client Data
+All client information stored in `clients/[client-name]/`:
+- `client-brief.md` - Core client information, brand voice, access credentials
+- See `clients/example-coastal-cafe/` for reference
+
+### Generated Output
+All generated content stored in `output/`:
+- `brands/` - Brand concepts, website copy, ad strategies
+- `newsletters/` - Generated newsletters
+- `seo-reports/` - SEO audits and keyword research
+- `maintenance/` - Weekly maintenance reports
+- `competitive-analysis/` - Competitor research
+
+---
+
 ## Technical Stack
 
 ### WordPress
@@ -52,11 +69,15 @@
 - Page Builder: Elementor (visual design only)
 - Hosting: WP Engine or Kinsta preferred
 - Security: Wordfence, iThemes Security
+- API: WordPress REST API for automation (see @wordpress-manager)
 
-### Claude Code Setup
-- GSD Framework: Multi-step autonomous workflows
-- Custom Agents: Coastal-focused brand/SEO/content
-- MCP Servers: WordPress, DataForSEO, Google Ads, GA4, Meta
+### MCP Servers
+Configured in `~/.claude/mcp.json`. See `.claude/SETUP.md` for installation.
+- **filesystem** - Read/write project files
+- **fetch** - Web scraping, WordPress API calls
+- **brave-search** - Market research, competitor discovery
+- **memory** - Persistent client context
+- **puppeteer** - Screenshots, testing
 
 ### Workflow Tools
 - Version Control: Git/GitHub
@@ -90,28 +111,77 @@
 
 ---
 
-## Approved Workflows
+## Custom Agents
 
-### Weekly Maintenance (Mondays)
+### @brand-refiner
+Generates coastal-inspired premium brand concepts (3 directions).
 ```
-"Run /maintenance for all clients"
+"Using @brand-refiner, create brand concepts for [business type] in [suburb].
+Target: [audience]. Differentiator: [unique selling point]."
 ```
-Handles: Security updates, SEO optimisation, broken links, performance
 
-### New Client Onboarding
+### @seo-optimizer
+Local SEO with Sunshine Coast focus + competitive analysis.
 ```
-"Run /client-pipeline for [business name] in [suburb].
-Services: [list]. Target: [audience]. Brand style: [coastal aesthetic]"
+"Using @seo-optimizer, optimise [page/site] for [keyword] in [suburb].
+Competitors: [URLs]."
 ```
-Delivers: Complete brand + website + SEO + ads package
 
-### Monthly Newsletter
+### @newsletter-writer
+Creates coastal lifestyle newsletters in appropriate brand voice.
 ```
-"Run /newsletter for [month].
-Topics: [coastal lifestyle trends].
-Voice: [sophisticated coastal]."
+"Using @newsletter-writer, create [month] newsletter for [client/agency].
+Topics: [list]. Voice: [brand voice description]."
 ```
-Creates: Agency or client newsletter in appropriate voice
+
+### @competitive-intel
+Deep competitor analysis with actionable recommendations.
+```
+"Using @competitive-intel, analyse competitors for [client]:
+[competitor URLs]. Focus: pricing, SEO, positioning."
+```
+
+### @design-inspiration
+Curates coastal design trends and creates mood boards.
+```
+"Using @design-inspiration, create mood board for [client].
+Style: [direction]. Include: colours, typography, photography."
+```
+
+### @wordpress-manager
+WordPress site maintenance and content management via REST API.
+```
+"Using @wordpress-manager, check site health for [client]."
+"Using @wordpress-manager, publish blog post to [client site]."
+```
+
+---
+
+## Skills (Workflows)
+
+### /maintenance
+Weekly maintenance workflow for all clients.
+```
+/maintenance
+"Run /maintenance for [specific client]"
+```
+**Output:** `output/maintenance/[date]-summary.md`
+
+### /client-pipeline
+Complete new client onboarding (10-phase pipeline).
+```
+"Run /client-pipeline for [client-name]"
+```
+**Prerequisite:** Client brief at `clients/[client-name]/client-brief.md`
+**Output:** Complete package in `output/brands/[client-name]/`
+
+### /newsletter
+Monthly newsletter generation.
+```
+"/newsletter for [month]"
+"/newsletter for [client] - [month]"
+```
+**Output:** `output/newsletters/[client]/[date]-newsletter.md`
 
 ---
 
@@ -140,40 +210,15 @@ Creates: Agency or client newsletter in appropriate voice
 
 ---
 
-## Custom Agents Available
+## Weekly Schedule
 
-### @brand-refiner
-Generates coastal-inspired premium brand concepts
-**Use:** "Create brand concepts for [coastal business type]"
-
-### @seo-optimizer
-Local SEO with Sunshine Coast focus + competitive analysis
-**Use:** "Optimise [page] for [coastal keyword] in [suburb]"
-
-### @newsletter-writer
-Creates coastal lifestyle newsletters in brand voice
-**Use:** "Write newsletter about [coastal lifestyle topic]"
-
-### @competitive-intel
-Scrapes competitor coastal businesses for positioning insights
-**Use:** "Analyse top 3 [business type] competitors in [suburb]"
-
-### @design-inspiration
-Curates coastal design trends (architecture, interiors, nature)
-**Use:** "Find design inspiration for [coastal business] - [style]"
-
----
-
-## Common Commands
-
-### /maintenance
-Weekly maintenance workflow for all clients
-
-### /client-pipeline
-Complete new client onboarding (10-bot pipeline)
-
-### /newsletter
-Generate monthly newsletter
+| Day | Task |
+|-----|------|
+| **Monday 9am** | Run `/maintenance` for all clients |
+| **Wednesday 10am** | Team sync - review maintenance reports |
+| **Friday 5pm** | Deploy approved updates to production |
+| **First Monday** | Create agency newsletter |
+| **Mid-month** | Client newsletters |
 
 ---
 
@@ -189,7 +234,7 @@ Generate monthly newsletter
 ### If SEO Rankings Drop
 1. Check Google Search Console for issues
 2. Review recent website changes
-3. Analyse competitor movements (DataForSEO)
+3. Analyse competitor movements
 4. Check for algorithm updates
 5. Report findings to client
 
@@ -197,9 +242,15 @@ Generate monthly newsletter
 
 ## Getting Help
 
-**Team Slack:** #coastal-design-studio
-**Team Lead:** [Your name] for MCP credentials, client questions
-**Weekly Sync:** Wednesday 10am AEST
+**Documentation:**
+- [Quick Start Guide](docs/QUICK-START.md)
+- [Complete User Guide](docs/USER-GUIDE.md)
+- [MCP Setup](.claude/SETUP.md)
+
+**Team:**
+- **Slack:** #coastal-design-studio
+- **Team Lead:** [Your name] for MCP credentials, client questions
+- **Weekly Sync:** Wednesday 10am AEST
 
 ---
 
@@ -209,7 +260,9 @@ Generate monthly newsletter
 
 **Naming:** kebab-case everywhere (lowercase, hyphens)
 
+**File Dates:** ISO format (yyyy-mm-dd)
+
 ---
 
-**Version:** 1.0 (February 2026)
+**Version:** 2.0 (February 2026)
 **Team:** Coastal Design Studio

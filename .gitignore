@@ -6,16 +6,41 @@
 # Environment variables
 .env
 .env.*
+.env.local
 
 # Credentials
 secrets/
 *.key
 *.pem
+*.p12
+credentials.json
 
 # OS files
 .DS_Store
 Thumbs.db
+*~
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Node (for MCP servers)
+node_modules/
+npm-debug.log
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Large media (use Google Drive)
+*.mp4
+*.mov
+*.zip
+*.tar.gz
+
+# Local testing
+.local/
+test-output/
