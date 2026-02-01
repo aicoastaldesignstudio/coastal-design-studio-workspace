@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "wordpress": {
+      "command": "wordpress-mcp",
+      "args": [
+        "--host", "PLACEHOLDER_COASTAL_DB_HOST",
+        "--user", "PLACEHOLDER_COASTAL_DB_USER",
+        "--password", "PLACEHOLDER_COASTAL_DB_PASSWORD",
+        "--database", "PLACEHOLDER_COASTAL_DB_NAME"
+      ]
+    },
+    "dataforseo": {
+      "command": "dataforseo-mcp",
+      "env": {
+        "DATAFORSEO_LOGIN": "PLACEHOLDER_TEAM_LOGIN",
+        "DATAFORSEO_PASSWORD": "PLACEHOLDER_TEAM_PASSWORD"
+      }
+    },
+    "google-ads": {
+      "command": "google-ads-mcp",
+      "args": ["--oauth"]
+    },
+    "google-analytics": {
+      "command": "google-analytics-mcp",
+      "args": ["--oauth"]
+    },
+    "meta-ads": {
+      "command": "meta-ads-mcp",
+      "args": ["--oauth"]
+    },
+    "firecrawl": {
+      "command": "firecrawl-mcp",
+      "env": {
+        "FIRECRAWL_API_KEY": "PLACEHOLDER_FIRECRAWL_KEY"
+      }
+    }
+  }
+}

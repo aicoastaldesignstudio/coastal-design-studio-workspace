@@ -1,0 +1,21 @@
+# Claude Code - Personal configs (NEVER commit)
+.claude/mcp.json
+.claude/settings.local.json
+.claude/.cache/
+
+# Environment variables
+.env
+.env.*
+
+# Credentials
+secrets/
+*.key
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
