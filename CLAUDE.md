@@ -60,6 +60,13 @@ All generated content stored in `output/`:
 - `maintenance/` - Weekly maintenance reports
 - `competitive-analysis/` - Competitor research
 
+### n8n Automation
+Workflow automation projects in `n8n-developments/`:
+- `projects/` - Individual workflow projects
+- `skills/` - n8n-skills reference
+- `standards.md` - Workflow development standards
+- See `n8n-developments/CLAUDE.md` for n8n context
+
 ---
 
 ## Technical Stack
