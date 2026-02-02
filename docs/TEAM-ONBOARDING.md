@@ -39,7 +39,7 @@ Welcome to Coastal Design Studio. This guide will get you set up with Claude Cod
 
 1. In Cursor's terminal, clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/aicoastaldesignstudio/coastal-design-studio-workspace.git
    ```
 2. Open the folder in Cursor:
    - File → Open Folder → select `coastaldesignstudio`
